@@ -10,45 +10,62 @@ public class assignOne {
 	
 	public static void main(String[] args) {
 		
-		Random rand = new Random();
-		Scanner input = new Scanner(System.in);
-
-		int  num1 = rand.nextInt(100) + 1;
-		int  num2 = rand.nextInt(100) + 1;
-	
-		String ans = "";
 		
-		System.out.println("What math operator do you want to perform?");
-		ans = input.nextLine();
+	
+		String whatOperation = "";
+		
+		
+		do {
+			
+			Random rand = new Random();
+			Scanner input = new Scanner(System.in);
+
+			int  num1 = rand.nextInt(100) + 1;
+			int  num2 = rand.nextInt(100) + 1;
+			
+		System.out.println("Enter 1 for addition, 2 for subtraction, 3 for multiplication, 4 for division, 5 for remainder, other for Exit.");
+		whatOperation = input.nextLine();
 		
 		System.out.println("The first random number is: " + num1);
 		System.out.println("The second random number is: " + num2);
 		
-		switch(ans) {
+		switch(whatOperation) {
 
-		case "+": 
-			System.out.println("Add");
+		case "1": 
+			System.out.println("Your choice: 1");
 			int addAns = num1 + num2;
-			System.out.println(addAns);
+			System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+			System.out.println("Enter your answer:");
+			int keyAdd = input.nextInt();
+			if (addAns == keyAdd)
+			{
+				System.out.println("You are correct!");
+			}
+			else
+				System.out.println("No. Please try again.");
 			break;
-		case "-":
-			System.out.println("Sub ");
+		case "2":
+			System.out.println("Your choice: 2");
 			int subAns = num1 - num2;
 			System.out.println(subAns);
 			break;
-		case "/":
-			System.out.println("Div");
-			int divAns = num1/num2;
-			System.out.println(divAns);
-			break;
-		case "*":
-			System.out.println("Multi");
+		case "3":
+			System.out.println("Your choice: 3");
 			int multiAns = num1*num2;
 			System.out.println(multiAns);
 			break;
+		case "4":
+			System.out.println("Your choice: 4");
+			int divAns = num1/num2;
+			System.out.println(divAns);
+			break;
 		default: 
-			System.out.println("Fuck you");
+			System.out.println("You have choosen to exit");
 			break;
 	}
+		}
+		while(whatOperation != "other");
+		
+		
 }
 }
