@@ -1,50 +1,63 @@
+/*
+ * Alberto Pizano
+ * CS354 Software Engineering Design
+ * Purdue University - Northwest
+ * 9/19/2018
+ */
+
+
 package cs354assignOne;
 
 import java.util.Scanner;
 import java.util.Random;
 
 public class assignOne {
-
+	
+	/*
+	public static int addFunct(int num1, int num2) {
+		
+	}
+*/
 	public static void main(String[] args) {
 		
-		
-		int correctCount = 0;
-
+	
 		String whatOperation = "";
 		
-		
+		int correctCount = 0;
+		int wrongCount = 0;
+		int attemptCount = 0;
 		
 		do {
 			
 		Random rand = new Random();
+		String contOrNot = "";
 		Scanner input = new Scanner(System.in);
-
+		Scanner input2 = new Scanner(System.in);
+		int totalCount = correctCount + wrongCount;
+	
 		int  num1 = rand.nextInt(100) + 1;
 		int  num2 = rand.nextInt(100) + 1;
-			
-		int wrongCount =0;
-			
-		System.out.println("Correct counter is at: " + correctCount);
+		int keyAdd;	
+		int addAns = 0;
+		
+		//first line ran after loop restarts
+		System.out.println("current correctCount is: " + correctCount);
 		System.out.println("Enter 1 for addition, 2 for subtraction, 3 for multiplication, 4 for division, 5 for remainder, other for Exit.");
 		whatOperation = input.nextLine();
 		
-		System.out.println("The first random number is: " + num1);
-		System.out.println("The second random number is: " + num2);
-		
 		switch(whatOperation) {
-
 		case "1": 
 			System.out.println("Your choice: 1");
-			int addAns = num1 + num2;
+			addAns = num1 + num2;
 			
 			System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
 			System.out.println("Enter your answer:");
-			int keyAdd = input.nextInt();
+			keyAdd = input.nextInt();
 			
 			if (addAns == keyAdd && correctCount == 0)
 			{
 				System.out.println("Very good!");
-				correctCount = correctCount + 1;
+				correctCount++;
 			}
 			else if(addAns == keyAdd && correctCount == 1) 
 			{
@@ -56,13 +69,115 @@ public class assignOne {
 				System.out.println("Keep up the good work!");
 				correctCount++;
 			}
+			
 			else
 			{
 				System.out.println("No. Please try again.");
-				correctCount = 0;
-			}
+				wrongCount++; //marks first wrong answer
+				correctCount = 0; //resets counter
+				
+				while(wrongCount <= 4) 
+				{
+				
+				if(wrongCount == 1 ) //1st wrong answer
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(addAns == keyAdd) 
+					{
+						System.out.println("Very good");
+						wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Wrong. Try once more.");
+						wrongCount++;
+						attemptCount++;
+					}	
+				}
+				else if (wrongCount == 2) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(addAns == keyAdd) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Don't give up!");
+						wrongCount++;
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 3) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(addAns == keyAdd) 
+					{
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(addAns == keyAdd) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					
+				else 
+					{
+						System.out.println("Type \"exit\" to try another problem or \"continue\" to attempt this problem again.");
+						contOrNot = input2.nextLine();
+						
+						System.out.println("You typed: " + contOrNot);
+						
+						if(contOrNot.equals("continue"))
+						{
+							 //resets wrong counter all over again, and entire loop starts again for user to attempt again
+							wrongCount = 1;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+						
+						if(contOrNot.equals("exit"))
+						{
+							wrongCount++;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+					} // closing brace for last else	
+				} // closing for else if == 4
+				
+			} // closing brace for while loop
+				
+		} // closing for else conditional
 			break;
-			
+//--------------------------------------------------------------------------------------------------------------------------
 		case "2":
 			System.out.println("Your choice: 2");
 			int subAns = num1 - num2;
@@ -182,9 +297,12 @@ public class assignOne {
 			
 		default: 
 			System.out.println("You have choosen to exit");
+			System.out.println("current correctCount is: " + correctCount);
+			System.out.println("Total attempts were: " + totalCount);
 			break;
 	}
 		}
-		while(whatOperation != "other");
+		while(!(whatOperation.equals("other")));
+		
 	}
 }
