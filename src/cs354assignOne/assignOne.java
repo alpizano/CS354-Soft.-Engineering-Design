@@ -70,7 +70,26 @@ public class assignOne {
 			System.out.println("Enter your answer:");
 			int keySub = input.nextInt();
 			
-			System.out.println(subAns);
+			if (subAns == keySub && correctCount == 0)
+			{
+				System.out.println("Very good!");
+				correctCount = correctCount + 1;
+			}
+			else if(subAns == keySub && correctCount == 1) 
+			{
+				System.out.println("Excellent!");
+				correctCount++;
+			}
+			else if(subAns == keySub && correctCount >=2 ) 
+			{
+				System.out.println("Keep up the good work!");
+				correctCount++;
+			}
+			else
+			{
+				System.out.println("No. Please try again.");
+				correctCount = 0;
+			}
 			break;
 			
 		case "3":
@@ -81,7 +100,26 @@ public class assignOne {
 			System.out.println("Enter your answer:");
 			int keyMulti = input.nextInt();
 			
-			System.out.println(multiAns);
+			if (multiAns == keyMulti && correctCount == 0)
+			{
+				System.out.println("Very good!");
+				correctCount = correctCount + 1;
+			}
+			else if(multiAns == keyMulti && correctCount == 1) 
+			{
+				System.out.println("Excellent!");
+				correctCount++;
+			}
+			else if(multiAns == keyMulti && correctCount >=2 ) 
+			{
+				System.out.println("Keep up the good work!");
+				correctCount++;
+			}
+			else
+			{
+				System.out.println("No. Please try again.");
+				correctCount = 0;
+			}
 			break;
 			
 		case "4":
@@ -91,7 +129,55 @@ public class assignOne {
 			System.out.println("Enter your answer:");
 			int keyDiv = input.nextInt();
 			
-			System.out.println(divAns);
+			if (divAns == keyDiv && correctCount == 0)
+			{
+				System.out.println("Very good!");
+				correctCount = correctCount + 1;
+			}
+			else if(divAns == keyDiv  && correctCount == 1) 
+			{
+				System.out.println("Excellent!");
+				correctCount++;
+			}
+			else if(divAns == keyDiv  && correctCount >=2 ) 
+			{
+				System.out.println("Keep up the good work!");
+				correctCount++;
+			}
+			else
+			{
+				System.out.println("No. Please try again.");
+				correctCount = 0;
+			}
+			break;
+			
+		case "5":
+			System.out.println("Your choice: 5");
+			int modAns = num1%num2;
+			System.out.println("How much is the remainder for " + num1 + " divided by " + num2 +"?");
+			System.out.println("Enter your answer:");
+			int keyMod = input.nextInt();
+			
+			if (modAns == keyMod && correctCount == 0)
+			{
+				System.out.println("Very good!");
+				correctCount = correctCount + 1;
+			}
+			else if(modAns == keyMod && correctCount == 1) 
+			{
+				System.out.println("Excellent!");
+				correctCount++;
+			}
+			else if(modAns == keyMod && correctCount >=2 ) 
+			{
+				System.out.println("Keep up the good work!");
+				correctCount++;
+			}
+			else
+			{
+				System.out.println("No. Please try again.");
+				correctCount = 0;
+			}
 			break;
 			
 		default: 
@@ -100,7 +186,5 @@ public class assignOne {
 	}
 		}
 		while(whatOperation != "other");
-		
-		
-}
+	}
 }
