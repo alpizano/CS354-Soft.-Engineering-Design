@@ -23,17 +23,20 @@ public class assignOne {
 	
 		String whatOperation = "";
 		
+		
 		int correctCount = 0;
-		int wrongCount = 0;
-		int attemptCount = 0;
 		
 		do {
-			
+		boolean correctFlag  = false;
 		Random rand = new Random();
 		String contOrNot = "";
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
+		
+		int wrongCount = 0;
+		int attemptCount = 0;
 		int totalCount = correctCount + wrongCount;
+		int totAttempts = totalCount + attemptCount;
 	
 		int  num1 = rand.nextInt(100) + 1;
 		int  num2 = rand.nextInt(100) + 1;
@@ -76,7 +79,7 @@ public class assignOne {
 				wrongCount++; //marks first wrong answer
 				correctCount = 0; //resets counter
 				
-				while(wrongCount <= 4) 
+				while(wrongCount <= 4 && correctFlag == false) 
 				{
 				
 				if(wrongCount == 1 ) //1st wrong answer
@@ -88,7 +91,8 @@ public class assignOne {
 					if(addAns == keyAdd) 
 					{
 						System.out.println("Very good");
-						wrongCount = 5;
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
 					}
@@ -107,6 +111,7 @@ public class assignOne {
 					
 					if(addAns == keyAdd) {
 						System.out.println("Very good");
+						correctFlag = true;
 						correctCount++;
 						attemptCount++;
 					}
@@ -127,6 +132,7 @@ public class assignOne {
 					if(addAns == keyAdd) 
 					{
 						System.out.println("Very good");
+						correctFlag = true;
 						correctCount++;
 						attemptCount++;
 						
@@ -147,6 +153,7 @@ public class assignOne {
 					
 					if(addAns == keyAdd) {
 						System.out.println("Very good");
+						correctFlag = true;
 						correctCount++;
 						attemptCount++;
 					}
@@ -203,8 +210,111 @@ public class assignOne {
 			else
 			{
 				System.out.println("No. Please try again.");
-				correctCount = 0;
-			}
+				wrongCount++; //marks first wrong answer
+				correctCount = 0; //resets counter
+				
+				while(wrongCount <= 4) 
+				{
+				
+				if(wrongCount == 1 ) //1st wrong answer
+				{
+					System.out.println("How much is " + num1 + " minus " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keySub = input.nextInt();
+					
+					if(subAns == keySub) 
+					{
+						System.out.println("Very good");
+						wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Wrong. Try once more.");
+						wrongCount++;
+						attemptCount++;
+					}	
+				}
+				else if (wrongCount == 2) 
+				{
+					System.out.println("How much is " + num1 + " minus " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(subAns == keySub) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Don't give up!");
+						wrongCount++;
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 3) 
+				{
+					System.out.println("How much is " + num1 + " minus " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(subAns == keySub) 
+					{
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is " + num1 + " minus " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(subAns == keySub) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					
+				else 
+					{
+						System.out.println("Type \"exit\" to try another problem or \"continue\" to attempt this problem again.");
+						contOrNot = input2.nextLine();
+						
+						System.out.println("You typed: " + contOrNot);
+						
+						if(contOrNot.equals("continue"))
+						{
+							 //resets wrong counter all over again, and entire loop starts again for user to attempt again
+							wrongCount = 1;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+						// exits to selection screen
+						if(contOrNot.equals("exit"))
+						{
+							wrongCount++;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+					} // closing brace for last else	
+				} // closing for else if == 4
+				
+			} // closing brace for while loop
+				
+		} // closing for else conditional
+			
+			
 			break;
 			
 		case "3":
@@ -233,8 +343,109 @@ public class assignOne {
 			else
 			{
 				System.out.println("No. Please try again.");
-				correctCount = 0;
-			}
+				wrongCount++; //marks first wrong answer
+				correctCount = 0; //resets counter
+				
+				while(wrongCount <= 4) 
+				{
+				
+				if(wrongCount == 1 ) //1st wrong answer
+				{
+					System.out.println("How much is " + num1 + " times " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyMulti = input.nextInt();
+					
+					if(multiAns == keyMulti) 
+					{
+						System.out.println("Very good");
+						wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Wrong. Try once more.");
+						wrongCount++;
+						attemptCount++;
+					}	
+				}
+				else if (wrongCount == 2) 
+				{
+					System.out.println("How much is " + num1 + " times " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(multiAns == keyMulti) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Don't give up!");
+						wrongCount++;
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 3) 
+				{
+					System.out.println("How much is " + num1 + " times " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(multiAns == keyMulti) 
+					{
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is " + num1 + " times " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(multiAns == keyMulti) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					
+				else 
+					{
+						System.out.println("Type \"exit\" to try another problem or \"continue\" to attempt this problem again.");
+						contOrNot = input2.nextLine();
+						
+						System.out.println("You typed: " + contOrNot);
+						
+						if(contOrNot.equals("continue"))
+						{
+							 //resets wrong counter all over again, and entire loop starts again for user to attempt again
+							wrongCount = 1;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+						
+						if(contOrNot.equals("exit"))
+						{
+							wrongCount++;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+					} // closing brace for last else	
+				} // closing for else if == 4
+				
+			} // closing brace for while loop
+				
+		} // closing for else conditional
 			break;
 			
 		case "4":
@@ -262,8 +473,109 @@ public class assignOne {
 			else
 			{
 				System.out.println("No. Please try again.");
-				correctCount = 0;
-			}
+				wrongCount++; //marks first wrong answer
+				correctCount = 0; //resets counter
+				
+				while(wrongCount <= 4) 
+				{
+				
+				if(wrongCount == 1 ) //1st wrong answer
+				{
+					System.out.println("How much is " + num1 + " divided by " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyDiv = input.nextInt();
+					
+					if(divAns == keyDiv) 
+					{
+						System.out.println("Very good");
+						wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Wrong. Try once more.");
+						wrongCount++;
+						attemptCount++;
+					}	
+				}
+				else if (wrongCount == 2) 
+				{
+					System.out.println("How much is " + num1 + " divided by " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(divAns == keyDiv) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Don't give up!");
+						wrongCount++;
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 3) 
+				{
+					System.out.println("How much is " + num1 + " divided by " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(divAns == keyDiv) 
+					{
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is " + num1 + " divided by " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyDiv = input.nextInt();
+					
+					if(divAns == keyDiv) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					
+				else 
+					{
+						System.out.println("Type \"exit\" to try another problem or \"continue\" to attempt this problem again.");
+						contOrNot = input2.nextLine();
+						
+						System.out.println("You typed: " + contOrNot);
+						
+						if(contOrNot.equals("continue"))
+						{
+							 //resets wrong counter all over again, and entire loop starts again for user to attempt again
+							wrongCount = 1;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+						
+						if(contOrNot.equals("exit"))
+						{
+							wrongCount++;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+					} // closing brace for last else	
+				} // closing for else if == 4
+				
+			} // closing brace for while loop
+				
+		} // closing for else conditional
 			break;
 			
 		case "5":
@@ -291,14 +603,116 @@ public class assignOne {
 			else
 			{
 				System.out.println("No. Please try again.");
-				correctCount = 0;
-			}
+				wrongCount++; //marks first wrong answer
+				correctCount = 0; //resets counter
+				
+				while(wrongCount <= 4) 
+				{
+				
+				if(wrongCount == 1 ) //1st wrong answer
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyMod = input.nextInt();
+					
+					if(modAns == keyMod) 
+					{
+						System.out.println("Very good");
+						wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Wrong. Try once more.");
+						wrongCount++;
+						attemptCount++;
+					}	
+				}
+				else if (wrongCount == 2) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(modAns == keyMod) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					else 
+					{
+						System.out.println("Don't give up!");
+						wrongCount++;
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 3) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(modAns == keyMod) 
+					{
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(modAns == keyMod) {
+						System.out.println("Very good");
+						correctCount++;
+						attemptCount++;
+					}
+					
+				else 
+					{
+						System.out.println("Type \"exit\" to try another problem or \"continue\" to attempt this problem again.");
+						contOrNot = input2.nextLine();
+						
+						System.out.println("You typed: " + contOrNot);
+						
+						if(contOrNot.equals("continue"))
+						{
+							 //resets wrong counter all over again, and entire loop starts again for user to attempt again
+							wrongCount = 1;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+						
+						if(contOrNot.equals("exit"))
+						{
+							wrongCount++;
+							System.out.println("The wrong count is: " + wrongCount);
+						}
+					} // closing brace for last else	
+				} // closing for else if == 4
+				
+			} // closing brace for while loop
+				
+		} // closing for else conditional
 			break;
 			
 		default: 
 			System.out.println("You have choosen to exit");
-			System.out.println("current correctCount is: " + correctCount);
-			System.out.println("Total attempts were: " + totalCount);
+			System.out.println("You score: " + correctCount + " out of" + totalCount + " in " + totAttempts + " attempts.");
+			System.out.println("Total attempts were: " + totAttempts);
+			correctCount = 0;
 			break;
 	}
 		}
