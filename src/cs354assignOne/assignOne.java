@@ -23,8 +23,11 @@ public class assignOne {
 	
 		String whatOperation = "";
 		
-		
-		int correctCount = 0;
+		int attemptCount = 0;
+		int wrongCount = 0;
+		int infiCount = 0;
+		int correctCount =0;
+		int uniqueQ = 0;
 		
 		do {
 		boolean correctFlag  = false;
@@ -33,9 +36,11 @@ public class assignOne {
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
 		
-		int wrongCount = 0;
-		int attemptCount = 0;
-		int totalCount = correctCount + wrongCount;
+		
+		
+		
+		
+		int totalCount = infiCount + wrongCount;
 		int totAttempts = totalCount + attemptCount;
 	
 		int  num1 = rand.nextInt(100) + 1;
@@ -47,9 +52,11 @@ public class assignOne {
 		System.out.println("current correctCount is: " + correctCount);
 		System.out.println("Enter 1 for addition, 2 for subtraction, 3 for multiplication, 4 for division, 5 for remainder, other for Exit.");
 		whatOperation = input.nextLine();
+		System.out.println("Your choice: " + whatOperation);
 		
 		switch(whatOperation) {
 		case "1": 
+			uniqueQ++;
 			System.out.println("Your choice: 1");
 			addAns = num1 + num2;
 			
@@ -61,16 +68,23 @@ public class assignOne {
 			{
 				System.out.println("Very good!");
 				correctCount++;
+				infiCount++;
+				attemptCount++;
 			}
 			else if(addAns == keyAdd && correctCount == 1) 
 			{
 				System.out.println("Excellent!");
 				correctCount++;
+				infiCount++;
+				attemptCount++;
+
 			}
 			else if(addAns ==keyAdd && correctCount >=2 ) 
 			{
 				System.out.println("Keep up the good work!");
 				correctCount++;
+				infiCount++;
+				attemptCount++;
 			}
 			
 			else
@@ -78,6 +92,7 @@ public class assignOne {
 				System.out.println("No. Please try again.");
 				wrongCount++; //marks first wrong answer
 				correctCount = 0; //resets counter
+				
 				
 				while(wrongCount <= 4 && correctFlag == false) 
 				{
@@ -95,12 +110,15 @@ public class assignOne {
 						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
+						
 					}
 					else 
 					{
 						System.out.println("Wrong. Try once more.");
 						wrongCount++;
 						attemptCount++;
+						
 					}	
 				}
 				else if (wrongCount == 2) 
@@ -114,6 +132,7 @@ public class assignOne {
 						correctFlag = true;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -135,7 +154,7 @@ public class assignOne {
 						correctFlag = true;
 						correctCount++;
 						attemptCount++;
-						
+						infiCount++;
 					}
 					else 
 					{
@@ -156,6 +175,7 @@ public class assignOne {
 						correctFlag = true;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					
 				else 
@@ -186,6 +206,7 @@ public class assignOne {
 			break;
 //--------------------------------------------------------------------------------------------------------------------------
 		case "2":
+			uniqueQ++;
 			System.out.println("Your choice: 2");
 			int subAns = num1 - num2;
 			System.out.println("How much is " + num1 + " minus " + num2 +"?");
@@ -196,16 +217,19 @@ public class assignOne {
 			{
 				System.out.println("Very good!");
 				correctCount = correctCount + 1;
+				infiCount++;
 			}
 			else if(subAns == keySub && correctCount == 1) 
 			{
 				System.out.println("Excellent!");
 				correctCount++;
+				infiCount++;
 			}
 			else if(subAns == keySub && correctCount >=2 ) 
 			{
 				System.out.println("Keep up the good work!");
 				correctCount++;
+				infiCount++;
 			}
 			else
 			{
@@ -225,9 +249,11 @@ public class assignOne {
 					if(subAns == keySub) 
 					{
 						System.out.println("Very good");
-						wrongCount = 5;
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -244,8 +270,11 @@ public class assignOne {
 					
 					if(subAns == keySub) {
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -264,8 +293,11 @@ public class assignOne {
 					if(subAns == keySub) 
 					{
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 						
 					}
 					else 
@@ -284,8 +316,11 @@ public class assignOne {
 					
 					if(subAns == keySub) {
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					
 				else 
@@ -313,11 +348,10 @@ public class assignOne {
 			} // closing brace for while loop
 				
 		} // closing for else conditional
-			
-			
 			break;
 			
 		case "3":
+			uniqueQ++;
 			System.out.println("Your choice: 3");
 			int multiAns = num1*num2;
 			
@@ -329,16 +363,19 @@ public class assignOne {
 			{
 				System.out.println("Very good!");
 				correctCount = correctCount + 1;
+				infiCount++;
 			}
 			else if(multiAns == keyMulti && correctCount == 1) 
 			{
 				System.out.println("Excellent!");
 				correctCount++;
+				infiCount++;
 			}
 			else if(multiAns == keyMulti && correctCount >=2 ) 
 			{
 				System.out.println("Keep up the good work!");
 				correctCount++;
+				infiCount++;
 			}
 			else
 			{
@@ -358,9 +395,11 @@ public class assignOne {
 					if(multiAns == keyMulti) 
 					{
 						System.out.println("Very good");
-						wrongCount = 5;
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -376,9 +415,11 @@ public class assignOne {
 					keyAdd = input.nextInt();
 					
 					if(multiAns == keyMulti) {
-						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -397,8 +438,11 @@ public class assignOne {
 					if(multiAns == keyMulti) 
 					{
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 						
 					}
 					else 
@@ -417,8 +461,11 @@ public class assignOne {
 					
 					if(multiAns == keyMulti) {
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					
 				else 
@@ -449,6 +496,7 @@ public class assignOne {
 			break;
 			
 		case "4":
+			uniqueQ++;
 			System.out.println("Your choice: 4");
 			int divAns = num1/num2;
 			System.out.println("How much is " + num1 + " divided by " + num2 +"?");
@@ -459,16 +507,19 @@ public class assignOne {
 			{
 				System.out.println("Very good!");
 				correctCount = correctCount + 1;
+				infiCount++;
 			}
 			else if(divAns == keyDiv  && correctCount == 1) 
 			{
 				System.out.println("Excellent!");
 				correctCount++;
+				infiCount++;
 			}
 			else if(divAns == keyDiv  && correctCount >=2 ) 
 			{
 				System.out.println("Keep up the good work!");
 				correctCount++;
+				infiCount++;
 			}
 			else
 			{
@@ -488,9 +539,11 @@ public class assignOne {
 					if(divAns == keyDiv) 
 					{
 						System.out.println("Very good");
-						wrongCount = 5;
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -507,8 +560,11 @@ public class assignOne {
 					
 					if(divAns == keyDiv) {
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -527,8 +583,11 @@ public class assignOne {
 					if(divAns == keyDiv) 
 					{
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 						
 					}
 					else 
@@ -547,8 +606,11 @@ public class assignOne {
 					
 					if(divAns == keyDiv) {
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					
 				else 
@@ -579,6 +641,7 @@ public class assignOne {
 			break;
 			
 		case "5":
+			uniqueQ++;
 			System.out.println("Your choice: 5");
 			int modAns = num1%num2;
 			System.out.println("How much is the remainder for " + num1 + " divided by " + num2 +"?");
@@ -589,16 +652,19 @@ public class assignOne {
 			{
 				System.out.println("Very good!");
 				correctCount = correctCount + 1;
+				infiCount++;
 			}
 			else if(modAns == keyMod && correctCount == 1) 
 			{
 				System.out.println("Excellent!");
 				correctCount++;
+				infiCount++;
 			}
 			else if(modAns == keyMod && correctCount >=2 ) 
 			{
 				System.out.println("Keep up the good work!");
 				correctCount++;
+				infiCount++;
 			}
 			else
 			{
@@ -618,9 +684,11 @@ public class assignOne {
 					if(modAns == keyMod) 
 					{
 						System.out.println("Very good");
-						wrongCount = 5;
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -637,8 +705,11 @@ public class assignOne {
 					
 					if(modAns == keyMod) {
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					else 
 					{
@@ -657,8 +728,11 @@ public class assignOne {
 					if(modAns == keyMod) 
 					{
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 						
 					}
 					else 
@@ -677,8 +751,11 @@ public class assignOne {
 					
 					if(modAns == keyMod) {
 						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
+						infiCount++;
 					}
 					
 				else 
@@ -710,8 +787,7 @@ public class assignOne {
 			
 		default: 
 			System.out.println("You have choosen to exit");
-			System.out.println("You score: " + correctCount + " out of" + totalCount + " in " + totAttempts + " attempts.");
-			System.out.println("Total attempts were: " + totAttempts);
+			System.out.println("You scored " + infiCount + " out of " + totalCount + " in " + totAttempts + " attempts.");
 			correctCount = 0;
 			break;
 	}
