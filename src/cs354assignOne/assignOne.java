@@ -19,8 +19,7 @@ public class assignOne {
 	}
 */
 	public static void main(String[] args) {
-		
-	
+
 		String whatOperation = "";
 		
 		int attemptCount = 0;
@@ -29,19 +28,15 @@ public class assignOne {
 		int correctCount =0;
 		int uniqueQ = 0;
 		
-		do {
+	do {
 		boolean correctFlag  = false;
 		Random rand = new Random();
 		String contOrNot = "";
 		Scanner input = new Scanner(System.in);
 		Scanner input2 = new Scanner(System.in);
 		
-		
-		
-		
-		
 		int totalCount = infiCount + wrongCount;
-		int totAttempts = totalCount + attemptCount;
+		int totAttempts = uniqueQ + attemptCount;
 	
 		int  num1 = rand.nextInt(100) + 1;
 		int  num2 = rand.nextInt(100) + 1;
@@ -57,7 +52,7 @@ public class assignOne {
 		switch(whatOperation) {
 		case "1": 
 			uniqueQ++;
-			System.out.println("Your choice: 1");
+			
 			addAns = num1 + num2;
 			
 			System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
@@ -69,22 +64,18 @@ public class assignOne {
 				System.out.println("Very good!");
 				correctCount++;
 				infiCount++;
-				attemptCount++;
 			}
 			else if(addAns == keyAdd && correctCount == 1) 
 			{
 				System.out.println("Excellent!");
 				correctCount++;
 				infiCount++;
-				attemptCount++;
-
 			}
 			else if(addAns ==keyAdd && correctCount >=2 ) 
 			{
 				System.out.println("Keep up the good work!");
 				correctCount++;
 				infiCount++;
-				attemptCount++;
 			}
 			
 			else
@@ -93,9 +84,10 @@ public class assignOne {
 				wrongCount++; //marks first wrong answer
 				correctCount = 0; //resets counter
 				
-				
-				while(wrongCount <= 4 && correctFlag == false) 
+				while(wrongCount <= 5 && correctFlag == false) 
 				{
+					
+				System.out.println("Total attempts are: " + attemptCount);
 				
 				if(wrongCount == 1 ) //1st wrong answer
 				{
@@ -107,18 +99,16 @@ public class assignOne {
 					{
 						System.out.println("Very good");
 						correctFlag = true;
-						//wrongCount = 5;
 						correctCount++;
 						attemptCount++;
 						infiCount++;
-						
 					}
+					
 					else 
 					{
-						System.out.println("Wrong. Try once more.");
+						System.out.println("No. Please try again.");
 						wrongCount++;
 						attemptCount++;
-						
 					}	
 				}
 				else if (wrongCount == 2) 
@@ -136,7 +126,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Don't give up!");
+						System.out.println("Wrong. Try once more.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -158,7 +148,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("No, keep trying");
+						System.out.println("Don't give up!");
 						wrongCount++;	
 						attemptCount++;
 					}	
@@ -170,8 +160,29 @@ public class assignOne {
 					System.out.println("Enter your answer:");
 					keyAdd = input.nextInt();
 					
-					if(addAns == keyAdd) {
+					if(addAns == keyAdd) 
+					{
 						System.out.println("Very good");
+						correctFlag = true;
+						correctCount++;
+						attemptCount++;
+						infiCount++;
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+				}
+				else if (wrongCount == 5) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(addAns == keyAdd) {
+						System.out.println("Very Good!");
 						correctFlag = true;
 						correctCount++;
 						attemptCount++;
@@ -204,10 +215,9 @@ public class assignOne {
 				
 		} // closing for else conditional
 			break;
-//--------------------------------------------------------------------------------------------------------------------------
+			
 		case "2":
 			uniqueQ++;
-			System.out.println("Your choice: 2");
 			int subAns = num1 - num2;
 			System.out.println("How much is " + num1 + " minus " + num2 +"?");
 			System.out.println("Enter your answer:");
@@ -237,7 +247,7 @@ public class assignOne {
 				wrongCount++; //marks first wrong answer
 				correctCount = 0; //resets counter
 				
-				while(wrongCount <= 4) 
+				while(wrongCount <= 5 && correctFlag == false) 
 				{
 				
 				if(wrongCount == 1 ) //1st wrong answer
@@ -257,7 +267,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Wrong. Try once more.");
+						System.out.println("No. Please try again.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -278,13 +288,36 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Don't give up!");
+						System.out.println("Wrong. Try once more.");
 						wrongCount++;
 						attemptCount++;
 					}	
 					
 				}
 				else if (wrongCount == 3) 
+				{
+					System.out.println("How much is " + num1 + " minus " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(subAns == keySub) 
+					{
+						System.out.println("Very good");
+						correctFlag = true;
+						correctCount++;
+						attemptCount++;
+						infiCount++;
+						
+					}
+					else 
+					{
+						System.out.println("Do not give up!");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 4) 
 				{
 					System.out.println("How much is " + num1 + " minus " + num2 +"?");
 					System.out.println("Enter your answer:");
@@ -302,13 +335,13 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("No, keep trying");
+						System.out.println("No, Keep trying");
 						wrongCount++;	
 						attemptCount++;
 					}	
 					
 				}
-				else if (wrongCount == 4) 
+				else if (wrongCount == 5) 
 				{
 					System.out.println("How much is " + num1 + " minus " + num2 +"?");
 					System.out.println("Enter your answer:");
@@ -352,7 +385,6 @@ public class assignOne {
 			
 		case "3":
 			uniqueQ++;
-			System.out.println("Your choice: 3");
 			int multiAns = num1*num2;
 			
 			System.out.println("How much is " + num1 + " times " + num2 +"?");
@@ -383,7 +415,7 @@ public class assignOne {
 				wrongCount++; //marks first wrong answer
 				correctCount = 0; //resets counter
 				
-				while(wrongCount <= 4) 
+				while(wrongCount <= 5 && correctFlag == false) 
 				{
 				
 				if(wrongCount == 1 ) //1st wrong answer
@@ -403,7 +435,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Wrong. Try once more.");
+						System.out.println("No. Please try again.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -423,7 +455,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Don't give up!");
+						System.out.println("Wrong. Try once more.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -447,13 +479,37 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("No, keep trying");
+						System.out.println("Do not give up!");
 						wrongCount++;	
 						attemptCount++;
 					}	
 					
 				}
 				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is " + num1 + " times " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(multiAns == keyMulti) 
+					{
+						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+						infiCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, Keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 5) 
 				{
 					System.out.println("How much is " + num1 + " times " + num2 +"?");
 					System.out.println("Enter your answer:");
@@ -497,7 +553,6 @@ public class assignOne {
 			
 		case "4":
 			uniqueQ++;
-			System.out.println("Your choice: 4");
 			int divAns = num1/num2;
 			System.out.println("How much is " + num1 + " divided by " + num2 +"?");
 			System.out.println("Enter your answer:");
@@ -527,7 +582,7 @@ public class assignOne {
 				wrongCount++; //marks first wrong answer
 				correctCount = 0; //resets counter
 				
-				while(wrongCount <= 4) 
+				while(wrongCount <= 5 && correctFlag == false) 
 				{
 				
 				if(wrongCount == 1 ) //1st wrong answer
@@ -547,7 +602,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Wrong. Try once more.");
+						System.out.println("No. Please try again.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -568,7 +623,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Don't give up!");
+						System.out.println("Wrong. Try once more.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -592,13 +647,37 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("No, keep trying");
+						System.out.println("Do not give up!");
 						wrongCount++;	
 						attemptCount++;
 					}	
 					
 				}
 				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is " + num1 + " divided by " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(divAns == keyDiv) 
+					{
+						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+						infiCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 5) 
 				{
 					System.out.println("How much is " + num1 + " divided by " + num2 +"?");
 					System.out.println("Enter your answer:");
@@ -642,7 +721,6 @@ public class assignOne {
 			
 		case "5":
 			uniqueQ++;
-			System.out.println("Your choice: 5");
 			int modAns = num1%num2;
 			System.out.println("How much is the remainder for " + num1 + " divided by " + num2 +"?");
 			System.out.println("Enter your answer:");
@@ -672,7 +750,7 @@ public class assignOne {
 				wrongCount++; //marks first wrong answer
 				correctCount = 0; //resets counter
 				
-				while(wrongCount <= 4) 
+				while(wrongCount <= 5 && correctFlag == false) 
 				{
 				
 				if(wrongCount == 1 ) //1st wrong answer
@@ -692,7 +770,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Wrong. Try once more.");
+						System.out.println("No. Please try again.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -713,7 +791,7 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("Don't give up!");
+						System.out.println("Wrong. Try once more.");
 						wrongCount++;
 						attemptCount++;
 					}	
@@ -737,13 +815,37 @@ public class assignOne {
 					}
 					else 
 					{
-						System.out.println("No, keep trying");
+						System.out.println("Do not give up!");
 						wrongCount++;	
 						attemptCount++;
 					}	
 					
 				}
 				else if (wrongCount == 4) 
+				{
+					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
+					System.out.println("Enter your answer:");
+					keyAdd = input.nextInt();
+					
+					if(modAns == keyMod) 
+					{
+						System.out.println("Very good");
+						correctFlag = true;
+						//wrongCount = 5;
+						correctCount++;
+						attemptCount++;
+						infiCount++;
+						
+					}
+					else 
+					{
+						System.out.println("No, keep trying");
+						wrongCount++;	
+						attemptCount++;
+					}	
+					
+				}
+				else if (wrongCount == 5) 
 				{
 					System.out.println("How much is the sum of " + num1 + " and " + num2 +"?");
 					System.out.println("Enter your answer:");
@@ -787,7 +889,7 @@ public class assignOne {
 			
 		default: 
 			System.out.println("You have choosen to exit");
-			System.out.println("You scored " + infiCount + " out of " + totalCount + " in " + totAttempts + " attempts.");
+			System.out.println("You scored " + infiCount + " out of " + uniqueQ + " in " + totAttempts + " attempts.");
 			correctCount = 0;
 			break;
 	}
