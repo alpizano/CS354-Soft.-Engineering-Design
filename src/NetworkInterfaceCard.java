@@ -6,7 +6,7 @@ public class NetworkInterfaceCard {
 	
 	public NetworkInterfaceCard() {
 		name = "";
-		IPAddress = "";
+		IPAddress = "192.168.0.1";
 		maskBits = 0;
 	}
 	
