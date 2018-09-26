@@ -12,6 +12,10 @@ public class Node {
 		networks = new ArrayList<NetworkInterfaceCard>();
 	}
 	
+	public Node(String name) {
+		this.name = name;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -22,6 +26,7 @@ public class Node {
 	
 	 public void addInterface(NetworkInterfaceCard n) {
 		  networks.add(n);
+		  id++;
 	  }
 	
 	public ArrayList<NetworkInterfaceCard> getInterfaces() {
