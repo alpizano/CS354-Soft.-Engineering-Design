@@ -1,13 +1,13 @@
-import java.util.ArrayList;
+// Alberto Pizano
 
 public class Link {
-	private Node[] links;
+	private Node[] links1;
 
 	public Link(Node node1, Node node2) {
-		links = new Node[]{node1, node2}; // sets links between two nodes
+		links1 = new Node[]{node1, node2}; // sets links between two nodes
 	}
 	
 	public Node[] getNodes() {
-		return links;
+		return links1;
 	}
 }

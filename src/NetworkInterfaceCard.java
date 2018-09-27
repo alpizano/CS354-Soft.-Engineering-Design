@@ -1,3 +1,4 @@
+// Alberto Pizano
 
 public class NetworkInterfaceCard {
 	private String name; // i.e. eth0
@@ -6,8 +7,14 @@ public class NetworkInterfaceCard {
 	
 	public NetworkInterfaceCard() {
 		name = "";
-		IPAddress = "192.168.0.1"; // octet format
+		IPAddress = ""; // octet format i.e. 192.168.0.1
 		maskBits = 0; // use 8 16 and 24
+	}
+	
+	public NetworkInterfaceCard(String name, String IPAddress, int maskBits) {
+		this.name = name;
+		this.IPAddress = IPAddress;
+		this.maskBits = maskBits;
 	}
 	
 	public NetworkInterfaceCard(String name) {
