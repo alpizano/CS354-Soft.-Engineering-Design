@@ -63,10 +63,10 @@ public class MyNetwork {
 					}
 					else 
 						System.out.println("Mask has to be 8, 16 or 24.");
-					System.out.print("To add more network interface cards, press 1: ");
+					System.out.print("Want to add more network interface cards, press 1: ");
 					moreCard = input.nextInt();
 				}
-				System.out.print("To add more nodes, press 1: ");
+				System.out.print("Want to add a node, press 1: ");
 				moreNode = input.nextInt();
 			}
 			else

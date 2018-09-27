@@ -17,6 +17,7 @@ public class NetworkInterfaceCard {
 		this.maskBits = maskBits;
 	}
 	
+	
 	public NetworkInterfaceCard(String name) {
 		this.name = name;
 	}

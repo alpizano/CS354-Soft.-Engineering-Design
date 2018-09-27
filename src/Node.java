@@ -7,7 +7,6 @@ public class Node {
 	private int id;
 	private ArrayList<NetworkInterfaceCard> networks1;
 	
-	
 	public Node() {
 		name = "";
 		id = 0;
@@ -31,10 +30,9 @@ public class Node {
 		return id;
 	}
 	
-	 public void addInterface(NetworkInterfaceCard i) {
-		  networks1.add(i);
-		  //id++;
-	  }
+	public void addInterface(NetworkInterfaceCard i){
+		networks1.add(i);
+	}
 	
 	public ArrayList<NetworkInterfaceCard> getInterfaces() {
 	    return this.networks1;
