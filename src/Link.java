@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Link {
-	private ArrayList<Node> links;
+	private Node[] links;
 
-	public Link() {
-		// sets links between two nodes
+	public Link(Node node1, Node node2) {
+		links = new Node[]{node1, node2}; // sets links between two nodes
 	}
 	
-	public ArrayList<Node> getNodes() {
-		return this.links;
+	public Node[] getNodes() {
+		return links;
 	}
 }
