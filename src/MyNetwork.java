@@ -33,7 +33,7 @@ public class MyNetwork {
 				{
 					System.out.print("Enter name of network interface card: ");
 					String cardName = input.next(); 
-					boolean isSame = false;
+					boolean duplicate = false;
 					
 					System.out.print("Enter IP address: ");
 					String IP = input.next();
@@ -43,10 +43,10 @@ public class MyNetwork {
 					{
 						if(IP.equals(IPs.get(i)))
 						{
-							isSame = true;
+							duplicate = true;
 						}
 					}
-					if(isSame)
+					if(duplicate)
 					{
 						System.out.println("Cannot have identical IP addresses.");
 						continue;
@@ -78,6 +78,7 @@ public class MyNetwork {
 		}
 		System.out.print("To add links, press 1: ");
 		int moreLinks = input.nextInt();
+		
 		while(moreLinks == 1)
 		{
 			System.out.print("Enter the name of the first host: ");

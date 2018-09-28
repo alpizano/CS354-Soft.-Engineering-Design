@@ -22,6 +22,7 @@ public class Network {
 
 		if(nodeInstances.size() > 0)
 		{
+			//checks for duplicate names
 			for(int i = 0; i < nodeInstances.size(); i++)
 			{
 				if(nodeInstances.get(i).getName().equals(n.getName()))
@@ -121,7 +122,7 @@ public class Network {
 		String routersString = "The routers on the network are: ";
 		
 		// begin nested for loop
-		for(int i = 0; i< nodeInstances.size(); i++)
+		for(int i = 0; i < nodeInstances.size(); i++)
 		{
 			int counter = 0;
 			for(int j = 0; j < links2.size(); j++)
@@ -131,7 +132,8 @@ public class Network {
 				{
 					counter++;
 				}
-				if(counter >=2 ){
+				if(counter >=2 )
+				{
 					routersString += nodeInstances.get(i).getName()+" ";
 					break;
 				}
@@ -139,6 +141,5 @@ public class Network {
 		}
 		return routersString;
 	}
-	
 }
 
