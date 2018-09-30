@@ -1,4 +1,5 @@
 // Alberto Pizano
+//CS354
 
 public class Link {
 	private Node[] links1;
