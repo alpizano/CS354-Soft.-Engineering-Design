@@ -52,162 +52,520 @@ public class MainActivity extends AppCompatActivity {
                 if(boxes[0][0].length() == 0)
                 {
                     boxes[0][0] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
-
                     Button btn = findViewById(R.id.button1) ;
                     btn.setText(mark);
 
                 }
                 counter++ ;
+                Log.i("ADebugTag", "Counter value after user turn: " + String.valueOf(counter));
 
                 // if greater than or equal to 5 turns, check for winner
                 if(counter >= 5)
                     checkWinner(0, 0);
 
-                if(mark.equals("X")) {
+                if(mark.equals("X"))
                     mark = "O" ;
-                }
 
                 else
-                    mark = "X" ;
+                    mark = "X";
+
+        //if(boxes[0][0].length() != 0 && )
+                    // marks random index with "O"
+                    if (boxes[x][y].length() == 0)
+                    {
+                        boxes[x][y] = mark;
+                        whichButton(x, y);
+                        counter++;
+                        Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                        if (counter >= 6)
+                            checkWinner(x, y);
+                    }
+                    else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                            || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                        {
+                        int newX = r.nextInt(3);
+                        int newY = r.nextInt(3);
+
+                        Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                        Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                        while (boxes[newX][newY].length() != 0) {
+                            newX = r.nextInt(3);
+                            newY = r.nextInt(3);
+                        }
+                        Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                        Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                        boxes[newX][newY] = mark;
+                        whichButton(newX, newY);
+                        counter++;
+                        Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                        if (counter >= 6)
+                            checkWinner(newX, newY);
+                    }
+
+                    if (mark.equals("X"))
+                        mark = "O";
+                    else
+                        mark = "X";
+
                 break ;
 
             case R.id.button2:
 
-                if(winFlag == true) break ;
+                Log.i("ADebugTag", "Value of x: " + String.valueOf(x));
+                Log.d("ADebugTag", "Value of y: " + String.valueOf(y));
+
+                if(winFlag == true)
+                    break ;
+
                 Log.i("MainActivity","Button 2 is pressed!") ;
+
                 if(boxes[0][1].length() == 0) {
                     boxes[0][1] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
                     Button btn = findViewById(R.id.button2) ;
                     btn.setText(mark);
                 }
                 counter++ ;
                 if(counter >= 5)
                     checkWinner(0, 1);
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+
+                    // marks random index with "O"
+                    if (boxes[x][y].length() == 0)
+                    {
+                        boxes[x][y] = mark;
+                        whichButton(x, y);
+                        counter++;
+                        Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                        if (counter >= 6)
+                            checkWinner(x, y);
+                    }
+                    else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                            || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                        {
+                        int newX = r.nextInt(3);
+                        int newY = r.nextInt(3);
+
+                        Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                        Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                        while (boxes[newX][newY].length() != 0) {
+                            newX = r.nextInt(3);
+                            newY = r.nextInt(3);
+                        }
+                        Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                        Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                        boxes[newX][newY] = mark;
+                        whichButton(newX, newY);
+                        counter++;
+                        Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                        if (counter >= 6)
+                            checkWinner(newX, newY);
+                    }
+                    if (mark.equals("X"))
+                        mark = "O";
+                    else
+                        mark = "X";
+                break;
+
+            case R.id.button3:
+
+                Log.i("ADebugTag", "Value of x: " + String.valueOf(x));
+                Log.d("ADebugTag", "Value of y: " + String.valueOf(y));
+
+                if(winFlag == true)
+                    break ;
+
+                Log.i("MainActivity","Button 3 is pressed!") ;
+
+                if(boxes[0][2].length() == 0) {
+                    boxes[0][2] = mark;
+                    Button btn = findViewById(R.id.button3) ;
+                    btn.setText(mark);
+                }
+                counter++;
+
+                if(counter >= 5)
+                    checkWinner(0, 2);
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+                    // marks random index with "O"
+                    if (boxes[x][y].length() == 0) {
+                        boxes[x][y] = mark;
+                        whichButton(x, y);
+                        counter++;
+                        Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                        if(counter >= 6)
+                            checkWinner(x, y);
+                    }
+                    else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                            || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                        {
+                        int newX = r.nextInt(3);
+                        int newY = r.nextInt(3);
+
+                        Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                        Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                        while (boxes[newX][newY].length() != 0) {
+                            newX = r.nextInt(3);
+                            newY = r.nextInt(3);
+                        }
+                        Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                        Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                        boxes[newX][newY] = mark;
+                        whichButton(newX, newY);
+                        counter++;
+                        Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                            if(counter >= 6)
+                                checkWinner(newX, newY);
+                    }
+
+
+                    if (mark.equals("X"))
+                        mark = "O";
+                    else
+                        mark = "X";
+
+
+                break;
+
+            case R.id.button4:
+                if(winFlag == true)
+                    break ;
+                if(boxes[1][0].length() == 0) {
+                    boxes[1][0] = mark;
+                    Button btn = findViewById(R.id.button4) ;
+                    btn.setText(mark);
+                }
+                counter++;
+                if(counter >= 5)
+                    checkWinner(1, 0);
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+                // marks random index with "O"
+                if (boxes[x][y].length() == 0) {
+                    boxes[x][y] = mark;
+                    whichButton(x, y);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(x, y);
+                }
+                else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                        || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                {
+                    int newX = r.nextInt(3);
+                    int newY = r.nextInt(3);
+
+                    Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                    while (boxes[newX][newY].length() != 0) {
+                        newX = r.nextInt(3);
+                        newY = r.nextInt(3);
+                    }
+                    Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                    boxes[newX][newY] = mark;
+                    whichButton(newX, newY);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(newX, newY);
+                }
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+                break ;
+
+            case R.id.button5:
+                if(winFlag == true)
+                    break ;
+                if(boxes[1][1].length() == 0) {
+                    boxes[1][1] = mark;
+                    Button btn = findViewById(R.id.button5) ;
+                    btn.setText(mark);
+                }
+                counter++;
+                if(counter >= 5)
+                    checkWinner(1, 1);
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+                // marks random index with "O"
+                if (boxes[x][y].length() == 0) {
+                    boxes[x][y] = mark;
+                    whichButton(x, y);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(x, y);
+                }
+                else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                        || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                {
+                    int newX = r.nextInt(3);
+                    int newY = r.nextInt(3);
+
+                    Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                    while (boxes[newX][newY].length() != 0) {
+                        newX = r.nextInt(3);
+                        newY = r.nextInt(3);
+                    }
+                    Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                    boxes[newX][newY] = mark;
+                    whichButton(newX, newY);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(newX, newY);
+                }
                 if(mark.equals("X"))
                     mark = "O" ;
                 else
                     mark = "X" ;
                 break;
 
-            case R.id.button3:
-                if(winFlag == true) break ;
-                Log.i("MainActivity","Button 3 is pressed!") ;
-                if(boxes[0][2].length() == 0) {
-                    boxes[0][2] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
-                    Button btn = findViewById(R.id.button3) ;
-                    btn.setText(mark);
-                }
-                counter++;
-                if(counter >= 5) checkWinner(0, 2);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
-                break;
-
-            case R.id.button4:
-                if(winFlag == true) break ;
-                if(boxes[1][0].length() == 0) {
-                    boxes[1][0] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
-                    Button btn = findViewById(R.id.button4) ;
-                    btn.setText(mark);
-                }
-                counter++;
-                if(counter >= 5) checkWinner(1, 0);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
-                break ;
-
-            case R.id.button5:
-                if(winFlag == true) break ;
-                if(boxes[1][1].length() == 0) {
-                    boxes[1][1] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
-                    Button btn = findViewById(R.id.button5) ;
-                    btn.setText(mark);
-                }
-                counter++;
-                if(counter >= 5) checkWinner(1, 1);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
-                break;
-
             case R.id.button6:
                 if(winFlag == true) break ;
                 if(boxes[1][2].length() == 0) {
                     boxes[1][2] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
                     Button btn = findViewById(R.id.button6) ;
                     btn.setText(mark);
                 }
                 counter++;
-                if(counter >= 5) checkWinner(1, 2);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
+                if(counter >= 5)
+                    checkWinner(1, 2);
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+                // marks random index with "O"
+                if (boxes[x][y].length() == 0) {
+                    boxes[x][y] = mark;
+                    whichButton(x, y);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(x, y);
+                }
+                else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                        || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                {
+                    int newX = r.nextInt(3);
+                    int newY = r.nextInt(3);
+
+                    Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                    while (boxes[newX][newY].length() != 0) {
+                        newX = r.nextInt(3);
+                        newY = r.nextInt(3);
+                    }
+                    Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                    boxes[newX][newY] = mark;
+                    whichButton(newX, newY);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(newX, newY);
+                }
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
                 break;
 
             case R.id.button7:
-                if(winFlag == true) break ;
+                if(winFlag == true)
+                    break ;
                 if(boxes[2][0].length() == 0) {
                     boxes[2][0] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
                     Button btn = findViewById(R.id.button7) ;
                     btn.setText(mark);
                 }
                 counter++;
-                if(counter >= 5) checkWinner(2, 0);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
+                if(counter >= 5)
+                    checkWinner(2, 0);
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+                // marks random index with "O"
+                if (boxes[x][y].length() == 0) {
+                    boxes[x][y] = mark;
+                    whichButton(x, y);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(x, y);
+                }
+                else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                        || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                {
+                    int newX = r.nextInt(3);
+                    int newY = r.nextInt(3);
+
+                    Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                    while (boxes[newX][newY].length() != 0) {
+                        newX = r.nextInt(3);
+                        newY = r.nextInt(3);
+                    }
+                    Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                    boxes[newX][newY] = mark;
+                    whichButton(newX, newY);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(newX, newY);
+                }
+
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
                 break;
 
             case R.id.button8:
-                if(winFlag == true) break ;
+                if(winFlag == true)
+                    break ;
                 if(boxes[2][1].length() == 0) {
                     boxes[2][1] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
                     Button btn = findViewById(R.id.button8) ;
                     btn.setText(mark);
                 }
                 counter++;
-                if(counter >= 5) checkWinner(2, 1);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
+                if(counter >= 5)
+                    checkWinner(2, 1);
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+
+                // marks random index with "O"
+                if (boxes[x][y].length() == 0) {
+                    boxes[x][y] = mark;
+                    whichButton(x, y);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(x, y);
+                }
+                else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                        || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                {
+                    int newX = r.nextInt(3);
+                    int newY = r.nextInt(3);
+
+                    Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                    while (boxes[newX][newY].length() != 0) {
+                        newX = r.nextInt(3);
+                        newY = r.nextInt(3);
+                    }
+                    Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                    boxes[newX][newY] = mark;
+                    whichButton(newX, newY);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(newX, newY);
+                }
+
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
                 break;
 
             case R.id.button9:
                 if(winFlag == true) break ;
                 if(boxes[2][2].length() == 0) {
                     boxes[2][2] = mark;
-                    // marks random index with "O"
-                    boxes[x][y] = "O";
-                    whichButton(x,y);
                     Button btn = findViewById(R.id.button9) ;
                     btn.setText(mark);
                 }
                 counter++;
-                if(counter >= 5) checkWinner(2, 2);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
-                break;
+                if(counter >= 5)
+                    checkWinner(2, 2);
 
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+
+                // marks random index with "O"
+                if (boxes[x][y].length() == 0) {
+                    boxes[x][y] = mark;
+                    whichButton(x, y);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. 1st sucess. attempt: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(x, y);
+                }
+                else if((boxes[x][y].length() != 0) && (boxes[0][0].length() == 0 || boxes[0][1].length() == 0 || boxes[0][2].length() == 0 || boxes[1][0].length() == 0 || boxes[1][1].length() == 0
+                        || boxes[1][2].length() == 0 || boxes[2][0].length() == 0 || boxes[2][1].length() == 0 || boxes[2][2].length() == 0))
+                {
+                    int newX = r.nextInt(3);
+                    int newY = r.nextInt(3);
+
+                    Log.i("ADebugTag", "Value of newX: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY: " + String.valueOf(newY));
+
+                    while (boxes[newX][newY].length() != 0) {
+                        newX = r.nextInt(3);
+                        newY = r.nextInt(3);
+                    }
+                    Log.i("ADebugTag", "Value of newX if changed after While loop: " + String.valueOf(newX));
+                    Log.d("ADebugTag", "Value of newY if changed after While loop: " + String.valueOf(newY));
+                    boxes[newX][newY] = mark;
+                    whichButton(newX, newY);
+                    counter++;
+                    Log.i("ADebugTag", "Counter value after A.I. generates new random # because boxes were full: " + String.valueOf(counter));
+                    if (counter >= 6)
+                        checkWinner(newX, newY);
+                }
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+                break;
         }
     }
 
@@ -254,13 +612,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkWinner(int i, int j){
-        // from left to right in row 1 victory
+        // row 1 left-to-right victory
         if(boxes[i][0].equals(boxes[i][1]) && boxes[i][1].equals(boxes[i][2])){
             winFlag = true ;
             TextView textView = findViewById(R.id.textView) ;
             textView.setVisibility(View.VISIBLE);
-            textView.setText("Winner is "+mark);
+            textView.setText("Winner is "+ mark);
         }
+        // row 1 col 3 downto victory
         if(boxes[0][j].equals(boxes[1][j]) && boxes[0][j].equals(boxes[2][j])){
             winFlag = true ;
             TextView textView = findViewById(R.id.textView) ;
