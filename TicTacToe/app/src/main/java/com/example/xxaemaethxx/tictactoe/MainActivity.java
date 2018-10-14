@@ -7,7 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+
+    Random r = new Random();
+
+
+    //int max = 9;
+    //int min = 1;
+    //int q = r.nextInt(max - min + 1) + min;
+
+    final static String TAG = " ";
 
     String[][] boxes = new String[][]{{"", "", ""}, {"", "", ""}, {"", "", ""}} ;
     static String mark = "X" ;
@@ -21,41 +32,77 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fillBox(View view){
+        int x = r.nextInt(3);
+        int y = r.nextInt(3);
+
         int id = view.getId() ;
         switch (id){
             case R.id.button1:
-                if(winFlag == true) break ;
-                if(boxes[0][0].length() == 0) {
+                //generates random int number from 0 to 2
+                //int x = r.nextInt(3);
+                //int y = r.nextInt(3);
+
+                Log.i("ADebugTag", "Value of x: " + String.valueOf(x));
+                Log.d("ADebugTag", "Value of y: " + String.valueOf(y));
+
+                if(winFlag == true)
+                    break;
+
+                // if first box is empty, mark an X
+                if(boxes[0][0].length() == 0)
+                {
                     boxes[0][0] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
+
                     Button btn = findViewById(R.id.button1) ;
                     btn.setText(mark);
+
                 }
                 counter++ ;
+
+                // if greater than or equal to 5 turns, check for winner
                 if(counter >= 5)
                     checkWinner(0, 0);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
 
+                if(mark.equals("X")) {
+                    mark = "O" ;
+                }
+
+                else
+                    mark = "X" ;
                 break ;
+
             case R.id.button2:
+
                 if(winFlag == true) break ;
                 Log.i("MainActivity","Button 2 is pressed!") ;
                 if(boxes[0][1].length() == 0) {
                     boxes[0][1] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button2) ;
                     btn.setText(mark);
                 }
                 counter++ ;
                 if(counter >= 5)
                     checkWinner(0, 1);
-                if(mark.equals("X")) mark = "O" ;
-                else mark = "X" ;
-                break ;
+                if(mark.equals("X"))
+                    mark = "O" ;
+                else
+                    mark = "X" ;
+                break;
+
             case R.id.button3:
                 if(winFlag == true) break ;
                 Log.i("MainActivity","Button 3 is pressed!") ;
                 if(boxes[0][2].length() == 0) {
                     boxes[0][2] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button3) ;
                     btn.setText(mark);
                 }
@@ -63,11 +110,15 @@ public class MainActivity extends AppCompatActivity {
                 if(counter >= 5) checkWinner(0, 2);
                 if(mark.equals("X")) mark = "O" ;
                 else mark = "X" ;
-                break ;
+                break;
+
             case R.id.button4:
                 if(winFlag == true) break ;
                 if(boxes[1][0].length() == 0) {
                     boxes[1][0] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button4) ;
                     btn.setText(mark);
                 }
@@ -76,10 +127,14 @@ public class MainActivity extends AppCompatActivity {
                 if(mark.equals("X")) mark = "O" ;
                 else mark = "X" ;
                 break ;
+
             case R.id.button5:
                 if(winFlag == true) break ;
                 if(boxes[1][1].length() == 0) {
                     boxes[1][1] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button5) ;
                     btn.setText(mark);
                 }
@@ -87,11 +142,15 @@ public class MainActivity extends AppCompatActivity {
                 if(counter >= 5) checkWinner(1, 1);
                 if(mark.equals("X")) mark = "O" ;
                 else mark = "X" ;
-                break ;
+                break;
+
             case R.id.button6:
                 if(winFlag == true) break ;
                 if(boxes[1][2].length() == 0) {
                     boxes[1][2] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button6) ;
                     btn.setText(mark);
                 }
@@ -99,11 +158,15 @@ public class MainActivity extends AppCompatActivity {
                 if(counter >= 5) checkWinner(1, 2);
                 if(mark.equals("X")) mark = "O" ;
                 else mark = "X" ;
-                break ;
+                break;
+
             case R.id.button7:
                 if(winFlag == true) break ;
                 if(boxes[2][0].length() == 0) {
                     boxes[2][0] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button7) ;
                     btn.setText(mark);
                 }
@@ -111,11 +174,15 @@ public class MainActivity extends AppCompatActivity {
                 if(counter >= 5) checkWinner(2, 0);
                 if(mark.equals("X")) mark = "O" ;
                 else mark = "X" ;
-                break ;
+                break;
+
             case R.id.button8:
                 if(winFlag == true) break ;
                 if(boxes[2][1].length() == 0) {
                     boxes[2][1] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button8) ;
                     btn.setText(mark);
                 }
@@ -123,11 +190,15 @@ public class MainActivity extends AppCompatActivity {
                 if(counter >= 5) checkWinner(2, 1);
                 if(mark.equals("X")) mark = "O" ;
                 else mark = "X" ;
-                break ;
+                break;
+
             case R.id.button9:
                 if(winFlag == true) break ;
                 if(boxes[2][2].length() == 0) {
                     boxes[2][2] = mark;
+                    // marks random index with "O"
+                    boxes[x][y] = "O";
+                    whichButton(x,y);
                     Button btn = findViewById(R.id.button9) ;
                     btn.setText(mark);
                 }
@@ -135,11 +206,55 @@ public class MainActivity extends AppCompatActivity {
                 if(counter >= 5) checkWinner(2, 2);
                 if(mark.equals("X")) mark = "O" ;
                 else mark = "X" ;
-                break ;
+                break;
 
         }
     }
+
+    // method to check which matrix indices correspond to which button
+    public void whichButton(int i, int j) {
+        if(boxes[i][j].equals(boxes[0][0])){
+            Button btn1 = findViewById(R.id.button1);
+            btn1.setText("O");
+        }
+        if(boxes[i][j].equals(boxes[0][1])){
+            Button btn2 = findViewById(R.id.button2);
+            btn2.setText("O");
+        }
+        if(boxes[i][j].equals(boxes[0][2])){
+            Button btn3 = findViewById(R.id.button3);
+            btn3.setText("O");
+        }
+
+        if(boxes[i][j].equals(boxes[1][0])){
+            Button btn4 = findViewById(R.id.button4);
+            btn4.setText("O");
+        }
+        if(boxes[i][j].equals(boxes[1][1])){
+            Button btn5 = findViewById(R.id.button5);
+            btn5.setText("O");
+        }
+        if(boxes[i][j].equals(boxes[1][2])){
+            Button btn6 = findViewById(R.id.button6);
+            btn6.setText("O");
+        }
+
+        if(boxes[i][j].equals(boxes[2][0])){
+            Button btn7 = findViewById(R.id.button7);
+            btn7.setText("O");
+        }
+        if(boxes[i][j].equals(boxes[2][1])){
+            Button btn8 = findViewById(R.id.button8);
+            btn8.setText("O");
+        }
+        if(boxes[i][j].equals(boxes[2][2])){
+            Button btn9 = findViewById(R.id.button9);
+            btn9.setText("O");
+        }
+    }
+
     private void checkWinner(int i, int j){
+        // from left to right in row 1 victory
         if(boxes[i][0].equals(boxes[i][1]) && boxes[i][1].equals(boxes[i][2])){
             winFlag = true ;
             TextView textView = findViewById(R.id.textView) ;
@@ -167,9 +282,7 @@ public class MainActivity extends AppCompatActivity {
                 textView.setVisibility(View.VISIBLE);
                 textView.setText("Winner is "+mark);
             }
-
         }
-
     }
 
     public void reset(View view){
