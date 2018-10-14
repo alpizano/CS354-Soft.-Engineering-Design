@@ -2,13 +2,18 @@ package com.example.xxaemaethxx.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     String[][] boxes = new String[][]{{"", "", ""}, {"", "", ""}, {"", "", ""}} ;
     static String mark = "X" ;
     static boolean winFlag = false ;
-    static int counter = 0 ;
+    static int counter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
