@@ -174,10 +174,18 @@ public class MainActivity extends AppCompatActivity {
         }
         if(clickedId == R.id.btnClear) {
             //Toast.makeText(this, "Button . pressed!", Toast.LENGTH_SHORT).show();
-            int i=numsArray.size();
+            //int i=numsArray.size();
+
+
+            /* testing while loop
             while(i > 0) {
                 numsArray.remove();
                 i--;
+            }
+            */
+
+            for(int k=numsArray.size()-1; k>=0; k--) {
+                numsArray.remove(k);
             }
             update();
         }
@@ -194,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
             }
             //String testOutput = Integer.toString(eval(strOutput));
             //Log.i("MainActivity", "value of eval() is: " + testOutput);
-           Output.setText(Integer.toString(eval(strOutput)));
+           Output.setText(Double.toString(eval(strOutput)));
         }
 
     }
@@ -217,8 +225,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public static int eval(final String str) {
-        return (int) new Object() {
+    public static double eval(final String str) {
+        return new Object() {
             int pos = -1, ch;
 
             void nextChar() {
@@ -240,12 +248,6 @@ public class MainActivity extends AppCompatActivity {
                 if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
                 return x;
             }
-
-            // Grammar:
-            // expression = term | expression `+` term | expression `-` term
-            // term = factor | term `*` factor | term `/` factor
-            // factor = `+` factor | `-` factor | `(` expression `)`
-            //        | number | functionName factor | factor `^` factor
 
             double parseExpression() {
                 double x = parseTerm();
