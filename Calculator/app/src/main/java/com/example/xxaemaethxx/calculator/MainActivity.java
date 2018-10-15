@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         btnEquals = (Button) findViewById(R.id.btnEquals);
         btnClear = (Button) findViewById(R.id.btnClear);
     }
-/*
+
+    /*
     public void btn0Pressed(View v) {
         Log.i("MainActivity", "button0 pressed");
     }
@@ -92,8 +93,7 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
-
-    public void clicks(View v) {
+    public void functClicks(View v) {
         int clickedId = v.getId();
 
         if(clickedId == R.id.btn0) {
@@ -149,29 +149,60 @@ public class MainActivity extends AppCompatActivity {
         }
         if(clickedId == R.id.btnAdd) {
             Toast.makeText(this, "Button + pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("+");
+            update();
         }
         if(clickedId == R.id.btnSub) {
             Toast.makeText(this, "Button - pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("-");
+            update();
         }
         if(clickedId == R.id.btnMul) {
             Toast.makeText(this, "Button * pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("*");
+            update();
         }
         if(clickedId == R.id.btnDiv) {
             Toast.makeText(this, "Button / pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("/");
+            update();
         }
         if(clickedId == R.id.btnDec) {
-            Toast.makeText(this, "Button . pressed!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Button . pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add(".");
+            update();
+        }
+        if(clickedId == R.id.btnClear) {
+            //Toast.makeText(this, "Button . pressed!", Toast.LENGTH_SHORT).show();
+            int i=numsArray.size();
+            while(i > 0) {
+                numsArray.remove();
+                i--;
+            }
+            update();
         }
         if(clickedId == R.id.btnEquals) {
+            String strOutput = " ";
+
             Toast.makeText(this, "Button = pressed!", Toast.LENGTH_SHORT).show();
+            //numsArray.add("=");
+            //update();
+
+
+            for(int i =0; i<numsArray.size(); i++) {
+                strOutput += numsArray.get(i);
+            }
+            //String testOutput = Integer.toString(eval(strOutput));
+            //Log.i("MainActivity", "value of eval() is: " + testOutput);
+           Output.setText(Integer.toString(eval(strOutput)));
         }
 
     }
 
     public void update() {
-        /* for stack
-        String strOutput = " ";
 
+        String strOutput = " ";
+        /* for stack
         while(!numbers.isEmpty()) {
             strOutput = numbers.pop();
         }
@@ -179,8 +210,91 @@ public class MainActivity extends AppCompatActivity {
         */
 
         for(int i=0; i < numsArray.size(); i++) {
-            Output.setText(numsArray.get(i));
+            strOutput += numsArray.get(i);
+            //Output.setText(numsArray.get(i));
         }
+        Output.setText(strOutput);
+    }
+
+
+    public static int eval(final String str) {
+        return (int) new Object() {
+            int pos = -1, ch;
+
+            void nextChar() {
+                ch = (++pos < str.length()) ? str.charAt(pos) : -1;
+            }
+
+            boolean eat(int charToEat) {
+                while (ch == ' ') nextChar();
+                if (ch == charToEat) {
+                    nextChar();
+                    return true;
+                }
+                return false;
+            }
+
+            double parse() {
+                nextChar();
+                double x = parseExpression();
+                if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
+                return x;
+            }
+
+            // Grammar:
+            // expression = term | expression `+` term | expression `-` term
+            // term = factor | term `*` factor | term `/` factor
+            // factor = `+` factor | `-` factor | `(` expression `)`
+            //        | number | functionName factor | factor `^` factor
+
+            double parseExpression() {
+                double x = parseTerm();
+                for (;;) {
+                    if      (eat('+')) x += parseTerm(); // addition
+                    else if (eat('-')) x -= parseTerm(); // subtraction
+                    else return x;
+                }
+            }
+
+            double parseTerm() {
+                double x = parseFactor();
+                for (;;) {
+                    if      (eat('*')) x *= parseFactor(); // multiplication
+                    else if (eat('/')) x /= parseFactor(); // division
+                    else return x;
+                }
+            }
+
+            double parseFactor() {
+                if (eat('+')) return parseFactor(); // unary plus
+                if (eat('-')) return -parseFactor(); // unary minus
+
+                double x;
+                int startPos = this.pos;
+                if (eat('(')) { // parentheses
+                    x = parseExpression();
+                    eat(')');
+                } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
+                    while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
+                    x = Double.parseDouble(str.substring(startPos, this.pos));
+                } else if (ch >= 'a' && ch <= 'z') { // functions
+                    while (ch >= 'a' && ch <= 'z') nextChar();
+                    String func = str.substring(startPos, this.pos);
+                    x = parseFactor();
+                    if (func.equals("sqrt")) x = Math.sqrt(x);
+                    else if (func.equals("sin")) x = Math.sin(Math.toRadians(x));
+                    else if (func.equals("cos")) x = Math.cos(Math.toRadians(x));
+                    else if (func.equals("tan")) x = Math.tan(Math.toRadians(x));
+                    else throw new RuntimeException("Unknown function: " + func);
+                } else {
+                    throw new RuntimeException("Unexpected: " + (char)ch);
+                }
+
+                if (eat('^')) x = Math.pow(x, parseFactor()); // exponentiation
+
+                return x;
+            }
+        }.parse();
     }
 
 
