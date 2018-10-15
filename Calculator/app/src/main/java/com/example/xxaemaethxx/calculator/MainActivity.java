@@ -8,7 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class MainActivity extends AppCompatActivity {
+
+    Stack<String> numbers = new Stack<String>();
+    ArrayList<String> numsArray = new ArrayList<String>();
 
     private TextView Output;
     private Button btn0;
@@ -86,38 +92,60 @@ public class MainActivity extends AppCompatActivity {
     }
     */
 
-    public void functClicks(View v) {
+
+    public void clicks(View v) {
         int clickedId = v.getId();
 
         if(clickedId == R.id.btn0) {
             Toast.makeText(this, "Button 0 pressed!", Toast.LENGTH_SHORT).show();
+            //numbers.push("0");
+            numsArray.add("0");
+            update();
         }
         if(clickedId == R.id.btn1) {
             Toast.makeText(this, "Button 1 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("1");
+            update();
         }
         if(clickedId == R.id.btn2) {
             Toast.makeText(this, "Button 2 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("2");
+            update();
         }
         if(clickedId == R.id.btn3) {
             Toast.makeText(this, "Button 3 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("3");
+            update();
         }
         if(clickedId == R.id.btn4) {
             Toast.makeText(this, "Button 4 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("4");
+            update();
         }
         if(clickedId == R.id.btn5) {
             Toast.makeText(this, "Button 5 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("5");
+            update();
         }
         if(clickedId == R.id.btn6) {
             Toast.makeText(this, "Button 6 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("6");
+            update();
         }
         if(clickedId == R.id.btn7) {
             Toast.makeText(this, "Button 7 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("7");
+            update();
         }
         if(clickedId == R.id.btn8) {
             Toast.makeText(this, "Button 8 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("8");
+            update();
         }
         if(clickedId == R.id.btn9) {
             Toast.makeText(this, "Button 9 pressed!", Toast.LENGTH_SHORT).show();
+            numsArray.add("9");
+            update();
         }
         if(clickedId == R.id.btnAdd) {
             Toast.makeText(this, "Button + pressed!", Toast.LENGTH_SHORT).show();
@@ -138,6 +166,21 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Button = pressed!", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    public void update() {
+        /* for stack
+        String strOutput = " ";
+
+        while(!numbers.isEmpty()) {
+            strOutput = numbers.pop();
+        }
+        Output.setText(strOutput);
+        */
+
+        for(int i=0; i < numsArray.size(); i++) {
+            Output.setText(numsArray.get(i));
+        }
     }
 
 
