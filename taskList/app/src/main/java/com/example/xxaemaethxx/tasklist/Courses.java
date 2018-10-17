@@ -1,11 +1,11 @@
 package com.example.xxaemaethxx.tasklist;
 
-public class Students {
+public class Courses {
     private String name;
     private String date;
     private String time;
 
-    public Students() {
+    public Courses() {
         name = " ";
         date = " ";
         time = " ";
