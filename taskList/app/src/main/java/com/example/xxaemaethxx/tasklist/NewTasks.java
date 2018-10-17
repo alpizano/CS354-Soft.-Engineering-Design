@@ -1,5 +1,6 @@
 package com.example.xxaemaethxx.tasklist;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +45,15 @@ public class NewTasks extends AppCompatActivity {
 
         helper.addCourses(course);
 
+        // resets Texts
+        Name.setText("");
+        Date.setText("");
+        Time.setText("");
+    }
+
+    public void viewPressed(View v) {
+        Intent i = new Intent(this, TaskList.class);
+        startActivity(i);
     }
 
 

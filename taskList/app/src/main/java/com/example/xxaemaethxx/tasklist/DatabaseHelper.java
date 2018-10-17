@@ -2,6 +2,7 @@ package com.example.xxaemaethxx.tasklist;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -48,8 +49,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_DATE, c.getDate());
         values.put(COL_TIME, c.getTime());
 
-
+        //inserts Course object into database
+        db.insert(TABLE_NAME, null , values);
+        db.close();
     }
 
+
+    public Cursor getCourses() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor courses = db.rawQuery(query, null);
+        return courses;
+    }
 
 }
