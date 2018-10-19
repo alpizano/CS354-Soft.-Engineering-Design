@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class NewTasks extends AppCompatActivity {
 
@@ -28,8 +29,6 @@ public class NewTasks extends AppCompatActivity {
         Time = (EditText) findViewById(R.id.etTime);
         Add = (Button) findViewById(R.id.btnAdd);
         View = (Button) findViewById(R.id.btnView);
-
-
     }
 
     public void addPressed(View v) {
@@ -44,6 +43,7 @@ public class NewTasks extends AppCompatActivity {
         course.setTime(time);
 
         helper.addCourses(course);
+        Toast.makeText(this, "Course information successfully added!", Toast.LENGTH_SHORT).show();
 
         // resets Texts
         Name.setText("");

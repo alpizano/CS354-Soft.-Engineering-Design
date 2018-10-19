@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 // Class must extend SQLiteOpenHelper and needs 2 methods (onCreate, onUpgrade) and constructor
 
@@ -12,10 +13,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Courses.db";
     private static final String TABLE_NAME = "Courses";
-    private static final String COL_ID = "id";
-    private static final String COL_NAME = "name";
-    private static final String COL_DATE = "date";
-    private static final String COL_TIME = "time";
+    private static final String COL_ID = "id"; // COL 1
+    private static final String COL_NAME = "name"; // COL 2
+    private static final String COL_DATE = "date"; // COL 3
+    private static final String COL_TIME = "time"; // COL 4
     SQLiteDatabase db;
 
     // Create Student table
@@ -69,6 +70,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Cursor data = db.rawQuery(query, null);
         return data;
+    }
+
+    public void updateName(String newName, int id, String oldName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL_NAME +
+                " = '" + newName + "' WHERE " + COL_ID + " = '" + id + "'" +
+                " AND " + COL_NAME + " = '" + oldName + "'";
+
+        Log.d("DatabaseHelper", "updateName: query: " + query);
+        Log.d("DatabaseHelper", "updateName: Setting name to " + newName);
+        db.execSQL(query);
+    }
+
+    public void deleteName(int id, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE "
+                + COL_ID + " = '" + id + "'" +
+                " AND " + COL_NAME + " = '" + name + "'";
+
+        db.execSQL(query);
     }
 
 }
