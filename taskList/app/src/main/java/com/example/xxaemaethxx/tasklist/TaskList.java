@@ -1,8 +1,10 @@
 package com.example.xxaemaethxx.tasklist;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,6 +60,22 @@ public class TaskList extends AppCompatActivity {
         // Create ArrayAdapter and adapt ArrayList to Adapter
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, courseList);
         courseView.setAdapter(arrayAdapter);
+
+        courseView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String name = adapterView.getItemAtPosition(i).toString();
+                Log.d("ListDataActivity", "onItemClick: You clicked on " + name);
+
+                Cursor data = helper.getItemID(name); // get ID associated with name
+
+                Intent intent = new Intent(TaskList.this, EditTasks.class);
+
+                intent.putExtra("name",name);
+                startActivity(intent);
+
+            }
+        });
     }
 
 }

@@ -23,7 +23,7 @@ public class NewTasks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_tasks);
 
-        Name = (EditText) findViewById(R.id.etTaskName);
+        Name = (EditText) findViewById(R.id.etName);
         Date = (EditText) findViewById(R.id.etDate);
         Time = (EditText) findViewById(R.id.etTime);
         Add = (Button) findViewById(R.id.btnAdd);
