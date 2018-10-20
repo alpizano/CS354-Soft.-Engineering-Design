@@ -28,7 +28,7 @@ public class Courses {
     }
 
     public String getTime() {
-        return this.name;
+        return this.time;
     }
 
     public void setTime(String time) {

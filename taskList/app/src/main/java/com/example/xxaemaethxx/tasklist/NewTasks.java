@@ -3,6 +3,7 @@ package com.example.xxaemaethxx.tasklist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,12 +37,18 @@ public class NewTasks extends AppCompatActivity {
         String date = Date.getText().toString();
         String time = Time.getText().toString();
 
+        // Create new Courses object of class Courses
         Courses course = new Courses();
 
         course.setName(courseName);
         course.setDate(date);
         course.setTime(time);
 
+        Log.d("NewTasks", "The value for Name added was: " + courseName);
+        Log.d("NewTasks", "The value for Date added was: " + date);
+        Log.d("NewTasks", "The value for Time added was: " + time);
+
+        // Adds Course object
         helper.addCourses(course);
         Toast.makeText(this, "Course information successfully added!", Toast.LENGTH_SHORT).show();
 
@@ -55,6 +62,4 @@ public class NewTasks extends AppCompatActivity {
         Intent i = new Intent(this, TaskList.class);
         startActivity(i);
     }
-
-
 }

@@ -31,12 +31,14 @@ public class TaskList extends AppCompatActivity {
 
     private void fillListView() {
 
-        Cursor data = helper.getCourses();
+        Cursor cursor = helper.getCourses();
         ArrayList<String> courseList = new ArrayList<>();
+        String result = "";
 
-        while(data.moveToNext()) {
+        while(cursor.moveToNext()) {
             // get the value from the database in column 1 & and add to ArrayList
-            courseList.add(data.getString(1));
+            result = cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3);
+            courseList.add(result);
         }
         // Create ArrayAdapter and adapt ArrayList to Adapter
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, courseList);
@@ -46,37 +48,42 @@ public class TaskList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-
-
                 //Should return object
                 String name = adapterView.getItemAtPosition(i).toString();
+                String[] words = name.split(" ");
+                String courseName = words[0];
+                String date = words[1];
+                String time = words[2];
 
-                //courseObject = adapterView.getItemAtPosition(i);
+                // attempting to return Course object and pull name, time and date variables- not working
+                //Courses courseObject = (Courses) adapterView.getItemAtPosition(i);
+                //String name = courseObject.getName().toString();
+                //String date = courseObject.getDate().toString();
+                //String time = courseObject.getTime().toString();
 
                 //course.getDate().toString();
-                String date = adapterView.getItemAtPosition(i).toString();
-                String time = adapterView.getItemAtPosition(i).toString();
+                //String date = adapterView.getItemAtPosition(i).toString();
+                //String time = adapterView.getItemAtPosition(i).toString();
 
                 Log.d("TaskList", "onItemClick: You clicked on " + name);
 
-                Cursor data = helper.getItemID(name); // get ID associated with name
-                int itemID = -1;
-                while(data.moveToNext())
-                {
-                    itemID = data.getInt(0);
-                }
-                if(itemID > -1) {
+                //Cursor data = helper.getItemID(name); // get ID associated with name
+                //int itemID = -1;
+                //while(data.moveToNext()) {
+                    //itemID = data.getInt(0);
+                //}
+                //if(itemID > -1) {
                     Log.d("TaskList", "onItemClick: You clicked on " + name);
                     Intent intent = new Intent(TaskList.this, EditTasks.class);
-                    intent.putExtra("id",itemID);
+                    //intent.putExtra("id",itemID);
                     intent.putExtra("name",name);
                     intent.putExtra("date",date);
                     intent.putExtra("time",time);
                     startActivity(intent);
-                }
-                else {
-                    Toast.makeText(TaskList.this, "No ID associated with that name!", Toast.LENGTH_SHORT).show();
-                }
+                //}
+                //else {
+                    //Toast.makeText(TaskList.this, "No ID associated with that name!", Toast.LENGTH_SHORT).show();
+                //}
             }
         });
     }

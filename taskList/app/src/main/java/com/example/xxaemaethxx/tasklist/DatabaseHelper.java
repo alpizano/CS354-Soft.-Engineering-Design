@@ -10,13 +10,13 @@ import android.util.Log;
 // Class must extend SQLiteOpenHelper and needs 2 methods (onCreate, onUpgrade) and constructor
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "Courses.db";
     private static final String TABLE_NAME = "Courses";
-    private static final String COL_ID = "id"; // COL 1
-    private static final String COL_NAME = "name"; // COL 2
-    private static final String COL_DATE = "date"; // COL 3
-    private static final String COL_TIME = "time"; // COL 4
+    private static final String COL_ID = "id"; // COL 0
+    private static final String COL_NAME = "name"; // COL 1
+    private static final String COL_DATE = "date"; // COL 2
+    private static final String COL_TIME = "time"; // COL 3
     SQLiteDatabase db;
 
     // Create Student table
@@ -46,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void addCourses(Courses c) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         values.put(COL_NAME, c.getName());
         values.put(COL_DATE, c.getDate());
         values.put(COL_TIME, c.getTime());
