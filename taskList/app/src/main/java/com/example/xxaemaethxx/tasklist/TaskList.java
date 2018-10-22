@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -32,7 +33,8 @@ public class TaskList extends AppCompatActivity {
     private void fillListView() {
 
         Cursor cursor = helper.getCourses();
-        ArrayList<String> courseList = new ArrayList<>();
+        //ArrayList<String> courseList = new ArrayList<>();
+        ArrayList<Courses> courseList = new ArrayList<>();
         String result = "";
 
         while(cursor.moveToNext()) {
@@ -40,8 +42,11 @@ public class TaskList extends AppCompatActivity {
             result = cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3);
             courseList.add(result);
         }
+
+        //iterate thru array list and getName getDate getTime
+        
         // Create ArrayAdapter and adapt ArrayList to Adapter
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, courseList);
+        ArrayAdapter<Courses> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, courseList);
         courseView.setAdapter(arrayAdapter);
 
         courseView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,15 +56,17 @@ public class TaskList extends AppCompatActivity {
                 //Should return object
                 String name = adapterView.getItemAtPosition(i).toString();
                 String[] words = name.split(" ");
-                String courseName = words[0];
+               String courseName = words[0];
                 String date = words[1];
-                String time = words[2];
+               String time = words[2];
 
                 // attempting to return Course object and pull name, time and date variables- not working
                 //Courses courseObject = (Courses) adapterView.getItemAtPosition(i);
-                //String name = courseObject.getName().toString();
-                //String date = courseObject.getDate().toString();
-                //String time = courseObject.getTime().toString();
+                //String name = courseObject.getName();
+                //String date = courseObject.getDate();
+               // String time = courseObject.getTime();
+
+               // String name = (EditText) view.findViewById(R.id.etName).getText().toString();
 
                 //course.getDate().toString();
                 //String date = adapterView.getItemAtPosition(i).toString();
@@ -67,23 +74,23 @@ public class TaskList extends AppCompatActivity {
 
                 Log.d("TaskList", "onItemClick: You clicked on " + name);
 
-                //Cursor data = helper.getItemID(name); // get ID associated with name
-                //int itemID = -1;
-                //while(data.moveToNext()) {
-                    //itemID = data.getInt(0);
-                //}
-                //if(itemID > -1) {
+                Cursor data = helper.getItemID(courseName); // get ID associated with name
+                int itemID = -1;
+                while(data.moveToNext()) {
+                    itemID = data.getInt(0);
+                }
+                if(itemID > -1) {
                     Log.d("TaskList", "onItemClick: You clicked on " + name);
                     Intent intent = new Intent(TaskList.this, EditTasks.class);
                     //intent.putExtra("id",itemID);
-                    intent.putExtra("name",name);
+                    intent.putExtra("name",courseName);
                     intent.putExtra("date",date);
                     intent.putExtra("time",time);
                     startActivity(intent);
-                //}
-                //else {
-                    //Toast.makeText(TaskList.this, "No ID associated with that name!", Toast.LENGTH_SHORT).show();
-                //}
+                }
+                else {
+                    Toast.makeText(TaskList.this, "No ID associated with that name!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
