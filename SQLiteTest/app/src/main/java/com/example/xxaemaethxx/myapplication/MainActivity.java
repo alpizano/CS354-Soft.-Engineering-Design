@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText time;
     private Button add;
     private Button weeklyView;
+    private Button calendar;
 
     DatabaseHelper helper = new DatabaseHelper(this);
 
@@ -29,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.etName);
         date = (EditText) findViewById(R.id.etDate);
         time = (EditText) findViewById(R.id.etTime);
+
         add = (Button) findViewById(R.id.btnAdd);
         weeklyView = (Button) findViewById(R.id.btnWeeklyView);
+        calendar = (Button) findViewById(R.id.btnCalendar);
 
         // manually write method OnClickListener vs. using Attributes onClick dropdown box
         add.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +61,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, WeeklyView.class);
-                startActivity(intent);
+                Intent i = new Intent(MainActivity.this, WeeklyView.class);
+                startActivity(i);
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Calendar.class);
+                startActivity(i);
             }
         });
 
