@@ -1,10 +1,14 @@
 package com.example.xxaemaethxx.myapplication;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+import java.util.StringTokenizer;
 
 public class Calendar extends AppCompatActivity {
+
 
     private TextView box1; // Sunday
     private TextView box2;
@@ -13,7 +17,7 @@ public class Calendar extends AppCompatActivity {
     private TextView box5;
     private TextView box6;
     private TextView box7;
-
+    DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,49 @@ public class Calendar extends AppCompatActivity {
 
     public void update() {
 
+
+    Cursor c = helper.getCourse();
+    String date = "";
+    String parsedYear ="";
+    String parsedMonth ="";
+    String parsedDay ="";
+
+
+    while(c.moveToNext()) {
+    date = c.getString(2);
+    StringTokenizer aTokenizer = new StringTokenizer(date,"-");
+
+    parsedYear = aTokenizer.nextToken();
+    parsedMonth = aTokenizer.nextToken();
+    parsedDay = aTokenizer.nextToken();
+
+    if(parsedDay.equals("01")) {
+        String course = c.getString(1);
+        String time =  c.getString(3);
+        box1.setText(course + "\n" + time);
+
+        //box1.setText(c.getString(1) + "\n" + c.getString(3));
+    }
+        if(parsedDay.equals("02")) {
+            box2.setText(c.getString(1) + "\n" + c.getString(3));
+        }
+        if(parsedDay.equals("03")) {
+            box3.setText(c.getString(1) + "\n" + c.getString(3));
+        }
+        if(parsedDay.equals("04")) {
+            box4.setText(c.getString(1) + "\n" + c.getString(3));
+        }
+        if(parsedDay.equals("05")) {
+            box5.setText(c.getString(1) + "\n" + c.getString(3));
+        }
+        if(parsedDay.equals("06")) {
+            box6.setText(c.getString(1) + "\n" + c.getString(3));
+        }
+        if(parsedDay.equals("07")) {
+            box7.setText(c.getString(1) + "\n" + c.getString(3));
+        }
+
+    }
 
     }
 

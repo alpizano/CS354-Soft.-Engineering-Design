@@ -9,7 +9,7 @@ import android.util.Log;
 
 // Class must extend SQLiteOpenHelper and needs 2 methods (onCreate, onUpgrade) and constructor
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class dDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "Courses.db";
     private static final String TABLE_NAME = "Courses";

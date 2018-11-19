@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Default constructor, use only Context context parameter. Pass null for factory
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
 
@@ -59,8 +59,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getCourse() {
         db = getWritableDatabase(); // Why not getReadableDatabase() ?
         String query = "SELECT * FROM " + TABLE_NAME;
+        // use rawQuery vs. execSQL for SELECT statements returning data in cursor
         Cursor cursor = db.rawQuery(query,null);
         return cursor;
+    }
+
+    public void deleteCourse() {
+        db = getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME;
+
     }
 
 }

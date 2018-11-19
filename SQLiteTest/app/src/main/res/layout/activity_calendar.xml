@@ -85,16 +85,18 @@
         <EditText
             android:id="@+id/box1"
             android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="none|textPersonName"
+            android:singleLine="false"
+            android:textSize="12sp"
             app:layout_column="0"
             app:layout_row="1" />
 
         <EditText
             android:id="@+id/box2"
             android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_column="1"
@@ -103,7 +105,7 @@
         <EditText
             android:id="@+id/box3"
             android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_column="2"
@@ -112,7 +114,7 @@
         <EditText
             android:id="@+id/box4"
             android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_column="3"
@@ -121,7 +123,7 @@
         <EditText
             android:id="@+id/box5"
             android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_column="4"
@@ -130,7 +132,7 @@
         <EditText
             android:id="@+id/box6"
             android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_column="5"
@@ -139,7 +141,7 @@
         <EditText
             android:id="@+id/box7"
             android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_column="6"
