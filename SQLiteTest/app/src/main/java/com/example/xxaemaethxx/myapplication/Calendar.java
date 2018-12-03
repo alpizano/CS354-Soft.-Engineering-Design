@@ -17,6 +17,7 @@ public class Calendar extends AppCompatActivity {
     private TextView box5;
     private TextView box6;
     private TextView box7;
+    private TextView testBox;
     DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
@@ -31,6 +32,7 @@ public class Calendar extends AppCompatActivity {
         box5 = (TextView) findViewById(R.id.box5); // Thursday
         box6 = (TextView) findViewById(R.id.box6); // Friday
         box7 = (TextView) findViewById(R.id.box7); // Saturday
+        testBox = (TextView) findViewById(R.id.tvTest);
 
 
         // To update the calendar with SQLite DB data
@@ -62,7 +64,13 @@ public class Calendar extends AppCompatActivity {
     if(parsedDay.equals("01")) {
         String course = c.getString(1);
         String time =  c.getString(3);
-        box1.setText(course + "\n" + time);
+        String firetext = (course + "\n" + time);
+
+
+
+        box1.setText(firetext.replace("\\\n", System.getProperty("line.separator")));
+        //testBox.setText("SUP" + System.getProperty("line.separator") + "yo");
+        testBox.setText("SUP" + System.getProperty("line.separator") + "yo");
 
         //box1.setText(c.getString(1) + "\n" + c.getString(3));
     }
