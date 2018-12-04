@@ -64,13 +64,15 @@ public class Calendar extends AppCompatActivity {
     if(parsedDay.equals("01")) {
         String course = c.getString(1);
         String time =  c.getString(3);
-        String firetext = (course + "\n" + time);
+        String firetext = (course + " \n " + time);
 
 
 
         box1.setText(firetext.replace("\\\n", System.getProperty("line.separator")));
+
         //testBox.setText("SUP" + System.getProperty("line.separator") + "yo");
-        testBox.setText("SUP" + System.getProperty("line.separator") + "yo");
+        //testBox.setText("SUP" + System.getProperty("line.separator") + "yo");
+        testBox.setText(course + " \n " + time);
 
         //box1.setText(c.getString(1) + "\n" + c.getString(3));
     }
