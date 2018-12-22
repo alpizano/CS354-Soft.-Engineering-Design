@@ -17,7 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".WeeklyView" />
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".Calendar" />
+        <activity android:name=".Login" />
+        <activity android:name=".splashScreen" />
+        <activity android:name=".signUp"></activity>
     </application>
 
 </manifest>
