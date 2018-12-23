@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         int y = r.nextInt(3);
 
         int id = view.getId() ;
+        Log.i("ADebugTag", "Value of view.getId(): " + String.valueOf(view.getId()));
         switch (id){
             case R.id.button1:
                 //generates random int number from 0 to 2

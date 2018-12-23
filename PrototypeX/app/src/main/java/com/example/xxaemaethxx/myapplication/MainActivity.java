@@ -1,5 +1,6 @@
 package com.example.xxaemaethxx.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Title = (TextView) findViewById(R.id.tvTitle);
+        Title = (TextView) findViewById(R.id.tvSub);
         Signup = (Button) findViewById(R.id.btnSignup);
         Login = (Button) findViewById(R.id.btnLogin);
 
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
             //Toast.makeText(getApplicationContext(),"blah motherfucker", Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this,"Signing you up...", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(MainActivity.this, Signup.class);
+                startActivity(i);
             }
         });
 
