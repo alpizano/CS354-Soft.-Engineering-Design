@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(ans == true) {
                     Intent i = new Intent(MainActivity.this, Splash.class);
+                    i.putExtra("pushedName",enteredName);
                     startActivity(i);
 
                 }
