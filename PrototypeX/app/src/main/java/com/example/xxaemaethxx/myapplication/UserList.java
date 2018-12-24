@@ -32,7 +32,7 @@ public class UserList extends AppCompatActivity {
 
         while(cursor.moveToNext()) {
             // get the value from the database in column 1 & and add to ArrayList
-            result = cursor.getString(0) + " "+ cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4);
+            result = cursor.getString(0) + " "+ cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4) + " " + cursor.getString(5);
             userList.add(result);
         }
 
