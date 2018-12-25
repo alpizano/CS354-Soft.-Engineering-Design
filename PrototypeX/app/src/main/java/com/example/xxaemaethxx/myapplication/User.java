@@ -1,10 +1,13 @@
 package com.example.xxaemaethxx.myapplication;
 
+import java.util.ArrayList;
+
 public class User {
     String name;
     String username;
     String pw;
     String email;
+    ArrayList<User> users = new ArrayList<>();
 
     public User() {
         this.name = name;
