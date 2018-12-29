@@ -14,6 +14,10 @@ public class Student extends User {
         auth = 0; // 0 auth is for Student access
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setAuth(int a) {
         auth = a;
     }

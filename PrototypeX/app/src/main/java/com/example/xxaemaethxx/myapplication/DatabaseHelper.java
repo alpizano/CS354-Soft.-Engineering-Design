@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_COURSES = "Courses";
     private static final String COL_COURSE_ID = COL_USER_ID;
     private static final String COL_COURSE_NAME = "name";
-    private static final String COL_COURSE_USER_ID = "user id";
+    private static final String COL_COURSE_BELONGS_USER_ID = "user id";
 
 
     private static final String DATABASE_NAME = "Users.db";
@@ -47,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_COURSES = "CREATE TABLE " + TABLE_COURSES + "(id integer primary key autoincrement,"+
             COL_COURSE_ID + "text not null,"+
             COL_COURSE_NAME + "text not null," +
-            COL_COURSE_USER_ID + "int not null);";
+            COL_COURSE_BELONGS_USER_ID + "int not null);";
 
     public DatabaseHelper( Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -112,6 +112,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db = getWritableDatabase(); // Why not getReadableDatabase() ?
         String query = "SELECT * FROM " + TABLE_USERS;
         // use rawQuery vs. execSQL for SELECT statements returning data in cursor
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
+    }
+
+    public Cursor getId(String username) {
+        db = getWritableDatabase();
+        String query = "SELECT id FROM " + TABLE_USERS + " WHERE username = '" + username +"'";
         Cursor cursor = db.rawQuery(query,null);
         return cursor;
     }

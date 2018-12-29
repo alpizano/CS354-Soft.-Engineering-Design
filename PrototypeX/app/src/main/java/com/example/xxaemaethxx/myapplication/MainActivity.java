@@ -1,6 +1,7 @@
 package com.example.xxaemaethxx.myapplication;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,8 +44,28 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("ADebugTag", "Value of return boolean from DB is: " + ans);
 
                 if(ans == true) {
+
+                    Cursor data = helper.getId(enteredName);
+                    String convRetIndex = "";
+
+                    int returnedId = -1;
+                    // why can't I just make data.getInt(0), why does it need loop?
+                    while(data.moveToNext()) {
+                        returnedId = data.getInt(0);
+                         convRetIndex = String.valueOf(returnedId);
+                    }
+                    if(returnedId > -1) {
+                        Log.i("ADebugTag", "Value of returned index from DB is: " + String.valueOf(returnedId));
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this, "No Id associated with that username", Toast.LENGTH_LONG).show();
+                    }
+
+                    //Log.i("ADebugTag", "Value of returned index from DB is: " + String.valueOf(returnedId));
+
                     Intent i = new Intent(MainActivity.this, Splash.class);
                     i.putExtra("pushedName",enteredName);
+                    i.putExtra("pushedIndex",convRetIndex);
                     startActivity(i);
 
                 }
